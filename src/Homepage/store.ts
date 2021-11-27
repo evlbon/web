@@ -1,4 +1,4 @@
-import { observable, action, computed, reaction } from "mobx";
+import { observable, action, computed, reaction, makeObservable } from "mobx";
 import { createContext } from 'react';
 import { v4 } from "uuid";
 
@@ -14,6 +14,9 @@ class TodoStore {
   }
 
   @observable
+  is_loading: boolean = false;
+
+  @observable
   todos: Todo[] = [
     { id: v4(), title: "Item #1", completed: false },
     { id: v4(), title: "Item #2", completed: false },
@@ -25,10 +28,14 @@ class TodoStore {
 
   @action
   addTodo = (todo: Todo) => {
+    this.is_loading = true;
     this.todos.push({ ...todo, id: v4() });
+    this.is_loading = false;
   };
 
   @action toggleTodo = (id: string) => {
+    this.is_loading = true;
+    console.log(this.todos);
     this.todos = this.todos.map(todo => {
       if (todo.id === id) {
         return {
@@ -38,10 +45,13 @@ class TodoStore {
       }
       return todo
     })
+    this.is_loading = false;
   }
 
   @action removeTodo = (id: string) => {
-    this.todos = this.todos.filter(todo => todo.id !== id)
+    this.is_loading = true;
+    this.todos = this.todos.filter(todo => todo.id !== id);
+    this.is_loading = false;
   }
 
   @computed get info() {

@@ -1,12 +1,9 @@
 import React, { useContext, useState } from "react";
 import TodoStore from './store';
 import { observer } from "mobx-react-lite";
-import { Form, Input, InputNumber, Button } from 'antd';
+import { Steps, message, Form, Input, InputNumber, Button } from 'antd';
 
-const layout = {
-    labelCol: { span: 8 },
-    wrapperCol: { span: 16 },
-};
+const { Step } = Steps;
 
 const validateMessages = {
     required: '${label} is required!',
@@ -24,7 +21,7 @@ const AddTodo = () => {
     const todoStore = useContext(TodoStore);
     const { addTodo, info } = todoStore;
     return (
-        <Form {...layout} name="nest-messages" validateMessages={validateMessages}>
+        <Form name="nest-messages" validateMessages={validateMessages}>
             <Form.Item
                 name={['user', 'name']}
                 label="Name"
@@ -32,7 +29,7 @@ const AddTodo = () => {
             >
                 <Input value={title} onChange={e => setTitle(e.target.value)} />
             </Form.Item>
-            <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+            <Form.Item>
                 <Button
                     type="primary"
                     htmlType="submit"
