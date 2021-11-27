@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import TodoStore from './store';
+import { todoStore } from './store';
 import { observer } from "mobx-react-lite";
-import { Steps, message, Form, Input, InputNumber, Button } from 'antd';
+import { Steps, Form, Input, Button } from 'antd';
 
 const { Step } = Steps;
 
@@ -18,8 +18,6 @@ const validateMessages = {
 
 const AddTodo = () => {
     const [title, setTitle] = useState("");
-    const todoStore = useContext(TodoStore);
-    const { addTodo, info } = todoStore;
     return (
         <Form name="nest-messages" validateMessages={validateMessages}>
             <Form.Item
@@ -34,7 +32,7 @@ const AddTodo = () => {
                     type="primary"
                     htmlType="submit"
                     onClick={_ => {
-                        addTodo({
+                        todoStore.addTodo({
                             title: title,
                             completed: false
                         })

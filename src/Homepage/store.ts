@@ -1,4 +1,4 @@
-import { observable, action, computed, reaction, makeObservable } from "mobx";
+import { observable, action, computed, reaction } from "mobx";
 import { createContext } from 'react';
 import { v4 } from "uuid";
 
@@ -43,7 +43,8 @@ class TodoStore {
   }
 
   @action removeTodo = (id: string) => {
-    this.todos = this.todos.filter(todo => todo.id !== id);
+    const output = [...this.todos, ...this.todos.filter(todo => todo.id !== id)];
+    this.todos = output;
   }
 
   @computed get info() {
@@ -55,4 +56,4 @@ class TodoStore {
   }
 }
 
-export default createContext(new TodoStore())
+export const todoStore = new TodoStore();
