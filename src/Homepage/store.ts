@@ -13,8 +13,6 @@ class TodoStore {
     reaction(() => this.todos, _ => console.log(this.todos));
   }
 
-  @observable
-  is_loading: boolean = false;
 
   @observable
   todos: Todo[] = [
@@ -28,13 +26,10 @@ class TodoStore {
 
   @action
   addTodo = (todo: Todo) => {
-    this.is_loading = true;
     this.todos.push({ ...todo, id: v4() });
-    this.is_loading = false;
   };
 
   @action toggleTodo = (id: string) => {
-    this.is_loading = true;
     console.log(this.todos);
     this.todos = this.todos.map(todo => {
       if (todo.id === id) {
@@ -45,13 +40,10 @@ class TodoStore {
       }
       return todo
     })
-    this.is_loading = false;
   }
 
   @action removeTodo = (id: string) => {
-    this.is_loading = true;
     this.todos = this.todos.filter(todo => todo.id !== id);
-    this.is_loading = false;
   }
 
   @computed get info() {
