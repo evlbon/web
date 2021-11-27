@@ -7,7 +7,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { Homepage } from './Homepage/Homepage';
+import Homepage from './Homepage/Homepage';
+import AddTodo from './Homepage/AddTodo';
 import { SignIn } from './Auth/SIgnIn';
 import { SignUp } from './Auth/SignUp';
 import { Navbar } from './Layout/Navbar';
@@ -26,21 +27,20 @@ function App() {
           <Layout style={{ padding: '0 24px 24px' }}>
             <Content
               className="site-layout-background"
-              style={{
-                padding: 24,
-                margin: 0,
-                minHeight: 280,
-              }}
+              style={{ padding: 24, margin: 0, minHeight: 280, }}
             >
               <Switch>
-                <Route path="/">
-                  <Homepage />
+                <Route path="/todo/add">
+                  <AddTodo />
                 </Route>
                 <Route path="/sign-in">
                   <SignIn />
                 </Route>
-                <Route path="sign-up">
+                <Route path="/sign-up">
                   <SignUp />
+                </Route>
+                <Route path="/">
+                  <Homepage />
                 </Route>
               </Switch>
             </Content>
