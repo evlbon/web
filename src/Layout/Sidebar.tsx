@@ -15,22 +15,21 @@ export function Sidebar() {
                 style={{ height: '100%', borderRight: 0 }}
             >
                 <SubMenu key="sub1" icon={<UserOutlined />} title="Account">
-                    <Menu.Item key="1">Profile</Menu.Item>
-                    <Menu.Item key="2">Limitations</Menu.Item>
-                    <Menu.Item key="3">Settings</Menu.Item>
-                    <Menu.Item key="4">Sign out</Menu.Item>
+                    <Menu.Item key="1">My Profile</Menu.Item>
+                    <Menu.Item key="2">My Services</Menu.Item>
+                    <Menu.Item key="3">Limitations</Menu.Item>
+                    <Menu.Item key="4">Settings</Menu.Item>
+                    <Menu.Item key="5">Sign out</Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub2" icon={<HomeOutlined />} title="Apartments">
-                    <Menu.Item key="5">option5</Menu.Item>
-                    <Menu.Item key="6">option6</Menu.Item>
-                    <Menu.Item key="7">option7</Menu.Item>
-                    <Menu.Item key="8">option8</Menu.Item>
+                    <Menu.Item key="6">Recommendations</Menu.Item>
+                    <Menu.Item key="7">All apartments</Menu.Item>
+                    <Menu.Item key="8">All tours</Menu.Item>
+                    <Menu.Item key="9">Settings</Menu.Item>
                 </SubMenu>
                 <SubMenu key="sub3" icon={<NotificationOutlined />} title="Notifications">
-                    <Menu.Item key="9">option9</Menu.Item>
-                    <Menu.Item key="10">option10</Menu.Item>
-                    <Menu.Item key="11">option11</Menu.Item>
-                    <Menu.Item key="12">option12</Menu.Item>
+                    <Menu.Item key="10">All notifications</Menu.Item>
+                    <Menu.Item key="11">Settings</Menu.Item>
                 </SubMenu>
             </Menu>
         </Sider>
