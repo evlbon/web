@@ -4,7 +4,7 @@ import { Navbar } from './Layout/Navbar';
 import { Layout, Menu } from 'antd';
 import { UserOutlined, HomeOutlined, NotificationOutlined } from '@ant-design/icons';
 import { Route, Link } from "react-router-dom";
-import { SignIn } from './Auth/SignIn';
+import { SignIn } from './Auth/SIgnIn';
 import { SignUp } from './Auth/SignUp';
 import Homepage from './Homepage/Homepage';
 import AddTodo from './Homepage/AddTodo';

@@ -1,4 +1,4 @@
-import { observable, action, computed, reaction } from "mobx";
+import {observable, action, computed, reaction, makeAutoObservable} from "mobx";
 import { createContext } from 'react';
 import { v4 } from "uuid";
 
@@ -10,6 +10,7 @@ export interface Todo {
 
 class TodoStore {
   constructor() {
+    makeAutoObservable(this)
     reaction(() => this.todos, _ => console.log(this.todos));
   }
 
@@ -43,8 +44,7 @@ class TodoStore {
   }
 
   @action removeTodo = (id: string) => {
-    const output = [...this.todos, ...this.todos.filter(todo => todo.id !== id)];
-    this.todos = output;
+    this.todos = this.todos.filter(todo => todo.id !== id);
   }
 
   @computed get info() {
